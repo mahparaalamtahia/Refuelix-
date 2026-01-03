@@ -368,6 +368,36 @@ class _OrderListItem extends StatelessWidget {
   }
 }
 
+// Order History Screen
+class OrderHistoryScreen extends StatelessWidget {
+  const OrderHistoryScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: ListView.builder(
+        padding: const EdgeInsets.all(20),
+        itemCount: 10, // Mock data
+        itemBuilder: (context, index) {
+          return Card(
+            margin: const EdgeInsets.only(bottom: 12),
+            child: _DetailedOrderItem(
+              orderId: '#ORD-${(index + 1).toString().padLeft(3, '0')}',
+              fuelType: index % 2 == 0 ? 'Petrol' : 'Diesel',
+              quantity: '${(index + 1) * 5}L',
+              status: index == 0 ? 'In Progress' : index < 3 ? 'Delivered' : 'Completed',
+              statusColor: index == 0 ? AppTheme.warningColor : AppTheme.successColor,
+              date: '2024-01-${(15 - index).toString().padLeft(2, '0')}',
+              amount: '৳${((index + 1) * 5 * 120)}',
+              station: 'Station ${index + 1}',
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
 // Detailed Order Item
 class _DetailedOrderItem extends StatelessWidget {
   final String orderId;
