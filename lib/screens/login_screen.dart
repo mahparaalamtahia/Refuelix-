@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../utils/theme.dart';
 import 'signup_screen.dart';
 import 'admin_dashboard.dart';
+import 'user_dashboard.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -47,11 +48,11 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           );
         } else {
-          // For regular users, you can navigate to user dashboard
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('User dashboard - Coming soon'),
-              backgroundColor: AppTheme.primaryColor,
+          // For regular users, navigate to user dashboard
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const UserDashboard(),
             ),
           );
         }
