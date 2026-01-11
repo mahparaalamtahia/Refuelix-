@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../utils/theme.dart';
 import 'login_screen.dart';
+import 'fuel_request_screen.dart';
 
 class UserDashboard extends StatefulWidget {
   const UserDashboard({super.key});
@@ -182,8 +183,9 @@ class UserHomeScreen extends StatelessWidget {
                   icon: Icons.add,
                   color: AppTheme.primaryColor,
                   onTap: () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('New order - Coming soon')),
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const FuelRequestScreen()),
                     );
                   },
                 ),
